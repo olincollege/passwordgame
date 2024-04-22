@@ -1,3 +1,5 @@
+import pygame
+
 class GameController:
     def __init__(self, model, view):
         self.model = model
