@@ -1,5 +1,6 @@
 import pygame
 
+
 class GameController:
     def __init__(self, model, view):
         self.model = model
@@ -27,10 +28,36 @@ class GameController:
                     self.model.password = self.model.password[:-1]
                     self.model.update_rules()
                 else:
-                    char = pygame.key.name(event.key)
+                    char = event.unicode
                     if char.isalnum() or char in {
                         "-",
                         "_",
-                    }:  # Allow alphanumeric and specific characters
+                        "!",
+                        "@",
+                        "#",
+                        "$",
+                        "%",
+                        "^",
+                        "&",
+                        "*",
+                        "(",
+                        ")",
+                        "=",
+                        "+",
+                        "[",
+                        "]",
+                        "{",
+                        "}",
+                        ";",
+                        ":",
+                        "'",
+                        '"',
+                        ",",
+                        "<",
+                        ".",
+                        ">",
+                        "/",
+                        "?",
+                    }:
                         self.model.password += char
                         self.model.update_rules()
