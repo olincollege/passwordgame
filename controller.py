@@ -21,20 +21,12 @@ class GameController:
                 if event.key == pygame.K_RETURN:
                     if self.model.check_password():
                         print("Password meets all requirements!")
-                        # self.running = False
-                        self.model.update_rules()
-                        if self.model.current_rule_index >= len(
-                            self.model.rules
-                        ):
-                            print("All rules met, game complete!")
-                            self.running = False
-                        # if not self.running:
-                        #     continue
+                        self.running = False
                     else:
                         print("Password does not meet the requirements.")
                 elif event.key == pygame.K_BACKSPACE:
                     self.model.password = self.model.password[:-1]
-                    # self.model.update_rules()
+                    self.model.update_rules()
                 else:
                     char = event.unicode
                     if char.isalnum() or char in {
@@ -68,6 +60,4 @@ class GameController:
                         "?",
                     }:
                         self.model.password += char
-                        # self.model.update_rules()
-                if not self.model.check_password():
-                    print("Password does not currently meet the requirements.")
+                        self.model.update_rules()
