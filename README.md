@@ -1,33 +1,23 @@
-# Python Project Template Repository
+# The Password Game
 
-This is a template repository for a Python project. Feel free to use and edit
-this repository (including this file) for your needs. Below, find some
-instructions and tips for using this template repository.
+## Summary
+"The Password Game" is a game that challenges players to create a password that abides by an increasingly difficult and ridiculous set of rules. We built the game using a model-view-controller architecture, with the Python coding language, and using a variety of libraries, notably including "pygame." Through a graphical user interface (GUI), players are met with immediate feedback and engaging visualizations as they progress through all of the crazy password rules. The rules range from basic requirements such as length or capitalization requirements to increasing difficult ones such as including roman numerals or the fibonacci sequence. Once all of the rules are satisfied, the player has won!
 
-## How to Use
-
-Click on the "Use this template" button in the top right corner to create a new
-repository based on this template. If this is for a class project, we ask that
-you keep it in the `olincollege` GitHub organization, and that you refrain from
-keeping the repository private. This will ensure that relevant people can access
-your repository for assessment, etc.
-
-## Requirements
-
-The `requirements.txt` file is blank and should be filled out with any project
-dependencies. There is a Python package called `pipreqs` that autogenerates the
-contents of the `requirements.txt` file based on the `import` statements in your
-`.py` files. To get this, run
+## Installation Instructions
+To install and play "The Password Game," you will need Python and a few libraries. Ensure you have the latest version on Python installed on your system, and then install the following three libraries in within the terminal using pip:
 
 ```
-pip install pipreqs
+pip install pygame
+pip install sympy
+pip install better_profanity
+```
+**As long as python and these libraries are installed and all the game files** (`model.py`, `view.py`, `controller.py`, and `main.py`) **are in the same directory** (*which they should be by default*)**, then you're ready to play.** No additional changes to the code are necessary unless you would like to modify or add your own game rules and graphics!
+
+## How to Start the Game
+To start the game, navigate to the directory containing the game files and run the following command in your terminal:
+
+```
+python main.py
 ```
 
-Then, in the root of your project repository, run:
-
-```
-pipreqs --mode compat
-```
-
-If you already have a `requirements.txt`, the above command will ask you to
-rerun the command with the `--force` flag to overwrite it.
+##### Congratulations, you have successfully launched the "The Password Game"! Enjoy!

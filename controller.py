@@ -16,8 +16,13 @@ class GameController:
 
     Attributes:
         model (GameModel): The model handling the game logic and state.
+<<<<<<< HEAD
         view (GameView): The view handling the rendering of
         the game on the screen.
+=======
+        view (GameView): The view handling the rendering of the game on
+        the screen.
+>>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         running (bool): A flag indicating if the game loop is running.
     """
 
@@ -45,12 +50,17 @@ class GameController:
 
     def handle_events(self):
         """
-        Handles incoming events such as keyboard input. Updates the game model,
-        and view accordingly.
+        Handles incoming events such as keyboard input. Updates the game
+        model, and view accordingly.
 
         Raises:
+<<<<<<< HEAD
             SystemExit: If the game is quit by closing the
             window or pressing ESC.
+=======
+            SystemExit: If the game is quit by closing the window or
+            pressing ESC.
+>>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -64,6 +74,10 @@ class GameController:
                         self.running = False
                         if self.model.all_rules_satisfied():
                             self.view.start_celebration()
+<<<<<<< HEAD
+=======
+                            # Triggers celebration in view
+>>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
                     else:
                         print("Password does not meet the requirements.")
                 elif event.key == pygame.K_BACKSPACE:
