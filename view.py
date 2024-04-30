@@ -16,10 +16,10 @@ Classes:
     to changes triggered by user inputs.
 """
 
-import pygame
 import sys
 import textwrap
 import random
+import pygame
 
 # Constants
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
@@ -162,7 +162,7 @@ class GameView:
                 self.draw_rule(message, y_offset, RULE_MET_COLOR)
                 y_offset += self.get_text_height(message) + 15
 
-    def draw_rule(self, text, y, color):
+    def draw_rule(self, text, vertical, color):
         """
         Draws a single rule with the specified text, vertical position,
         and color.
@@ -175,7 +175,7 @@ class GameView:
         text_height = self.get_text_height(text)
         rule_rect = pygame.Rect(
             (SCREEN_WIDTH - RULE_RECT_WIDTH) / 2,
-            y,
+            vertical,
             RULE_RECT_WIDTH,
             text_height + 10,
         )
@@ -227,8 +227,8 @@ class GameView:
         """
         # Draw confetti particles
         for _ in range(50):
-            for x, y, color, size in self.confetti:
-                pygame.draw.circle(self.screen, color, (x, y), size)
+            for xaxis, yaxis, color, size in self.confetti:
+                pygame.draw.circle(self.screen, color, (xaxis, yaxis), size)
 
             # Draw "Congratulations" message on top of the confetti
             congratulations_font = pygame.font.Font(
