@@ -1,3 +1,11 @@
+"""
+This module contains the GameController class which
+manages the game loop and user interactions.
+It processes events, updates game state, and
+interacts with the game model and view.
+"""
+
+# pylint: disable=no-member
 import pygame
 from better_profanity import profanity
 
@@ -8,7 +16,8 @@ class GameController:
 
     Attributes:
         model (GameModel): The model handling the game logic and state.
-        view (GameView): The view handling the rendering of the game on the screen.
+        view (GameView): The view handling the rendering of
+        the game on the screen.
         running (bool): A flag indicating if the game loop is running.
     """
 
@@ -40,7 +49,8 @@ class GameController:
         and view accordingly.
 
         Raises:
-            SystemExit: If the game is quit by closing the window or pressing ESC.
+            SystemExit: If the game is quit by closing the
+            window or pressing ESC.
         """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -53,7 +63,7 @@ class GameController:
                         print("Password meets all requirements!")
                         self.running = False
                         if self.model.all_rules_satisfied():
-                            self.view.start_celebration()  # Trigger celebration in view
+                            self.view.start_celebration()
                     else:
                         print("Password does not meet the requirements.")
                 elif event.key == pygame.K_BACKSPACE:
