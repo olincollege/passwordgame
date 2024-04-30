@@ -93,6 +93,7 @@ class GameController:
                         ">",
                         "/",
                         "?",
+                        "|",
                     }:
                         new_password = self.model.password + char
                         if profanity.contains_profanity(new_password):
