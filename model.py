@@ -30,7 +30,6 @@ from sympy import isprime
 
 class GameModel:
     """
-<<<<<<< HEAD
     The model for the password validation game which enforces
     various password rules.
 
@@ -48,43 +47,15 @@ class GameModel:
         last_look_and_say (str): The last sequence in the look-and-say series.
         next_look_and_say (str): The next sequence in the look-and-say
             series that needs to be guessed.
-=======
-    The model for the password validation game which enforces various
-    password rules.
-
-    Attributes:
-        password (str): The user's current input attempting to satisfy
-        all password rules.
-        rules (list): A list of methods that represent the rules the
-        password must satisfy.
-        messages (list): A list of strings representing messages for each
-        rule to display.
-        current_rule_index (int): The index of the currently active rule.
-        satisfied_rules (list): A list of indices representing rules
-        that have been satisfied.
-        all_rules_satisfied (bool): Indicates if all rules have been
-        satisfied.
-        last_look_and_say (str): The last sequence in the look-and-say
-        series.
-        next_look_and_say (str): The next sequence in the look-and-say
-        series that needs to be guessed.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
     """
 
     def __init__(self):
         """
-<<<<<<< HEAD
         Initializes the GameModel with a set of
         password validation rules and messages
         associated with each rule. Also initializes
         the state for tracking rule satisfaction
         and the look-and-say sequence for the current game session.
-=======
-        Initializes the GameModel with a set of password validation rules
-        and messages associated with each rule. Also initializes the state
-        for tracking rule satisfaction and the look-and-say sequence for
-        the current game session.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
 
         """
         self.password = ""
@@ -121,7 +92,6 @@ class GameModel:
 
     def update_rules(self):
         """
-<<<<<<< HEAD
         Re-evaluates all rules based on the current password.
         Updates the list of satisfied rules
         and determines the current rule index.
@@ -129,27 +99,14 @@ class GameModel:
         """
         # Check all rules based on the current
         # password and update their satisfaction status
-=======
-        Re-evaluates all rules based on the current password. Updates the
-        list of satisfied rules and determines the current rule index. Also
-        sets the flag for all rules being satisfied.
-        """
-        # Check all rules based on the current password
-        # Updates their satisfaction status
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         self.satisfied_rules = []
         self.current_rule_index = 0
         for index, rule in enumerate(self.rules):
             if rule(self.password):
                 self.satisfied_rules.append(index)
             else:
-<<<<<<< HEAD
                 # If any rule is not satisfied,
                 # we set it as the current rule to break the loop
-=======
-                # If any rule is not satisfied, we set it as the current rule
-                # to be displayed and break the loop
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
                 self.current_rule_index = index
                 break
 
@@ -174,13 +131,8 @@ class GameModel:
             password (str): The password to validate.
 
         Returns:
-<<<<<<< HEAD
             bool: True if the password meets the
                 minimum length, False otherwise.
-=======
-            bool: True if the password meets the minimum length, False
-            otherwise.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         """
         return len(password) >= 5
 
@@ -205,13 +157,8 @@ class GameModel:
             password (str): The password to validate.
 
         Returns:
-<<<<<<< HEAD
             bool: True if the password contains an uppercase letter,
             False otherwise.
-=======
-            bool: True if the password contains an uppercase letter, False
-            otherwise.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         """
         return any(c.isupper() for c in password)
 
@@ -224,37 +171,22 @@ class GameModel:
             password (str): The password to validate.
 
         Returns:
-<<<<<<< HEAD
             bool: True if the password contains a special character,
             False otherwise.
-=======
-            bool: True if the password contains a special character, False
-            otherwise.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         """
         return any(not c.isalnum() for c in password)
 
     def rule_include_fibonacci(self, password):
         """
-<<<<<<< HEAD
         Validates that the password contains a
         number from the Fibonacci sequence.
-=======
-        Validates that the password contains a number from the Fibonacci
-        sequence.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
 
         Args:
             password (str): The password to validate.
 
         Returns:
-<<<<<<< HEAD
             bool: True if the password contains a
             Fibonacci number, False otherwise.
-=======
-            bool: True if the password contains a Fibonacci number, False
-            otherwise.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         """
         fib_nums = {
             0,
@@ -279,13 +211,8 @@ class GameModel:
 
     def rule_include_morse(self, password):
         """
-<<<<<<< HEAD
         Validates that the password contains at least one
         Morse code character ('.' or '-').
-=======
-        Validates that the password contains at least one Morse code
-        character ('.' or '-').
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
 
         Args:
             password (str): The password to validate.
@@ -330,13 +257,8 @@ class GameModel:
             password (str): The password to validate.
 
         Returns:
-<<<<<<< HEAD
             bool: True if the password contains
                 a Roman numeral, False otherwise.
-=======
-            bool: True if the password contains a Roman numeral, False
-            otherwise.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         """
         roman_numerals = {"I", "V", "X", "L", "C", "D", "M"}
         return any(numeral in password for numeral in roman_numerals)
@@ -358,13 +280,8 @@ class GameModel:
 
     def rule_chess_sicilian_defense(self, password):
         """
-<<<<<<< HEAD
         Validates that the password contains the move 'c5',
         a response to the chess opening move 'e4'.
-=======
-        Validates that the password contains the move 'c5', a response
-        to the chess opening move 'e4'.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
 
         Args:
             password (str): The password to validate.
@@ -378,7 +295,6 @@ class GameModel:
 
     def init_look_and_say(self):
         """
-<<<<<<< HEAD
         Initializes the look-and-say sequence by determining
         a random sequence length
         and generating the required sequence as per the game rules.
@@ -386,15 +302,6 @@ class GameModel:
         Raises:
             ValueError: If the generated sequence does
                 not meet expected criteria.
-=======
-        Initializes the look-and-say sequence by determining a random
-        sequence length and generating the required sequence as per the
-        game rules.
-
-        Raises:
-            ValueError: If the generated sequence does not meet expected
-            criteria.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
         """
         # Randomly determine the number of steps (e.g., between 3 and 6)
         num_steps = random.randint(3, 6)
@@ -410,21 +317,12 @@ class GameModel:
     @staticmethod
     def next_look_and_say_sequence(sequencex):
         """
-<<<<<<< HEAD
         Calculates the next sequence in the look-and-say
         series based on the given input sequence.
 
         Args:
             sequencex (str): The current sequence from which
                 the next one will be generated.
-=======
-        Calculates the next sequence in the look-and-say series based on
-        the given input sequence.
-
-        Args:
-            s (str): The current sequence from which the next one will be
-            generated.
->>>>>>> 39549de82ce4c9b8ad914833afd89c3e203b717c
 
         Returns:
             str: The next sequence in the look-and-say series.
