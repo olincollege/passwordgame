@@ -1,3 +1,16 @@
+"""
+Controller module for managing interactions during the password game.
+
+This module possesses the GameController class which interacts with
+the game model and view. It manages user inputs, processes game logic,
+and updates the current game status and corresponding view accordingly.
+
+Classes:
+    GameController: Manages user inputs and current game status updates.
+    Uses the game model to manage the game's logic and current status
+    and the game view to visualize the game on the user's screen.
+"""
+
 import pygame
 from better_profanity import profanity
 
@@ -8,7 +21,8 @@ class GameController:
 
     Attributes:
         model (GameModel): The model handling the game logic and state.
-        view (GameView): The view handling the rendering of the game on the screen.
+        view (GameView): The view handling the rendering of the game on
+        the screen.
         running (bool): A flag indicating if the game loop is running.
     """
 
@@ -36,11 +50,12 @@ class GameController:
 
     def handle_events(self):
         """
-        Handles incoming events such as keyboard input. Updates the game model,
-        and view accordingly.
+        Handles incoming events such as keyboard input. Updates the game
+        model, and view accordingly.
 
         Raises:
-            SystemExit: If the game is quit by closing the window or pressing ESC.
+            SystemExit: If the game is quit by closing the window or
+            pressing ESC.
         """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -53,7 +68,8 @@ class GameController:
                         print("Password meets all requirements!")
                         self.running = False
                         if self.model.all_rules_satisfied():
-                            self.view.start_celebration()  # Trigger celebration in view
+                            self.view.start_celebration()
+                            # Triggers celebration in view
                     else:
                         print("Password does not meet the requirements.")
                 elif event.key == pygame.K_BACKSPACE:

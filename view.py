@@ -1,3 +1,21 @@
+"""
+View module for visualizing the password game.
+
+This module possesses the GameView class that creates text, input
+boxes, and animations, based on the current game status communicated
+by the game Model.
+
+Includes features such an input box for password entry, displaying
+rules and their fulfillment status, and triggering a celebration
+animation when the user correctly meets all the password requirements.
+
+Classes:
+    GameView: Manages the visualization of all the game visuals
+    including input areas, rules, and animations. The class updates to
+    display the current status of the game model and display responses
+    to changes triggered by user inputs.
+"""
+
 import pygame
 import sys
 import textwrap
@@ -25,20 +43,26 @@ class GameView:
         screen (pygame.Surface): The main display surface for the game.
         clock (pygame.time.Clock): A clock object to manage frame rate.
         font (pygame.font.Font): The font used for rendering text.
-        input_box (pygame.Rect): The input box where the user's password is displayed.
+        input_box (pygame.Rect): The input box where the user's password
+        is displayed.
         cursor_visible (bool): Indicates if the cursor is currently visible.
         cursor_timer (int): Counts the time for cursor visibility toggling.
-        cursor_interval (int): The interval at which the cursor visibility toggles.
-        congratulations (bool): Indicates if the celebration sequence should run.
-        confetti (list): A list of confetti parameters for the celebration sequence.
+        cursor_interval (int): The interval at which the cursor visibility
+        toggles.
+        congratulations (bool): Indicates if the celebration sequence should
+        run.
+        confetti (list): A list of confetti parameters for the celebration
+        sequence.
     """
 
     def __init__(self, model):
         """
-        Initializes the GameView with the given model and sets up the display surface.
+        Initializes the GameView with the given model and sets up the
+        display surface.
 
         Args:
-            model (GameModel): The game's model that contains the game state.
+            model (GameModel): The game's model that contains the game
+            state.
         """
         self.model = model
         pygame.init()
@@ -54,11 +78,13 @@ class GameView:
 
     def draw_text_wrapped(self, text, rect, color):
         """
-        Draws text within a given rectangle, wrapping it to fit within the width.
+        Draws text within a given rectangle, wrapping it to fit within
+        the width.
 
         Args:
             text (str): The text to be drawn.
-            rect (pygame.Rect): The rectangle area where the text will be drawn.
+            rect (pygame.Rect): The rectangle area where the text will
+            be drawn.
             color (tuple): The color of the text.
         """
         y_offset = 0
@@ -89,7 +115,8 @@ class GameView:
 
     def draw_rules(self):
         """
-        Draws the game rules, highlighting satisfied rules and the current active rule.
+        Draws the game rules, highlighting satisfied rules and the current
+        active rule.
         """
         # Check if all rules are satisfied before drawing
         if self.model.all_rules_satisfied:
@@ -137,7 +164,8 @@ class GameView:
 
     def draw_rule(self, text, y, color):
         """
-        Draws a single rule with the specified text, vertical position, and color.
+        Draws a single rule with the specified text, vertical position,
+        and color.
 
         Args:
             text (str): The text representing the rule.
@@ -170,8 +198,8 @@ class GameView:
 
     def start_celebration(self):
         """
-        Initiates the celebration sequence by generating confetti and setting the
-        flag to start the celebration.
+        Initiates the celebration sequence by generating confetti and
+        setting the flag to start the celebration.
         """
         self.congratulations = True
         self.confetti_count = 50  # Set a limit to the number of confetti pieces
@@ -194,7 +222,8 @@ class GameView:
 
     def draw_celebration(self):
         """
-        Draws the celebration sequence with confetti and a congratulatory message.
+        Draws the celebration sequence with confetti and a congratulatory
+        message.
         """
         # Draw confetti particles
         for _ in range(50):
@@ -221,8 +250,8 @@ class GameView:
 
     def render(self):
         """
-        Renders the entire view, including the input box, rules, and the celebration
-        sequence if all rules are satisfied.
+        Renders the entire view, including the input box, rules, and
+        the celebration sequence if all rules are satisfied.
         """
         self.screen.fill(BACKGROUND_COLOR)
         if self.congratulations:

@@ -1,28 +1,56 @@
+"""
+Model module for managing game logic and state in the password game.
+
+This module possesses the GameModel class which tracks the current
+state of the game, including the status of the user password and the
+rules that the password has already satisfied and has not yet satisfied.
+
+The class provides methods to validate the password using a set of
+predefined rules and tracks which rules have been satisfied and which
+are currently active, updating the game state as the player modifies
+their input/password.
+
+Classes:
+    GameModel: Includes the game's logic and state, the current password,
+    validation rules, messages for each rule, and indications for satisfied
+    rules. Provides methods to check the password based on the rules and
+    updates rule satisfaction.
+"""
+
+import random
 from math import sqrt, isqrt
 from sympy import isprime
-import random
 
 
 class GameModel:
     """
-    The model for the password validation game which enforces various password rules.
+    The model for the password validation game which enforces various
+    password rules.
 
     Attributes:
-        password (str): The user's current input attempting to satisfy all password rules.
-        rules (list): A list of methods that represent the rules the password must satisfy.
-        messages (list): A list of strings representing messages for each rule to display.
+        password (str): The user's current input attempting to satisfy
+        all password rules.
+        rules (list): A list of methods that represent the rules the
+        password must satisfy.
+        messages (list): A list of strings representing messages for each
+        rule to display.
         current_rule_index (int): The index of the currently active rule.
-        satisfied_rules (list): A list of indices representing rules that have been satisfied.
-        all_rules_satisfied (bool): Indicates if all rules have been satisfied.
-        last_look_and_say (str): The last sequence in the look-and-say series.
-        next_look_and_say (str): The next sequence in the look-and-say series that needs to be guessed.
+        satisfied_rules (list): A list of indices representing rules
+        that have been satisfied.
+        all_rules_satisfied (bool): Indicates if all rules have been
+        satisfied.
+        last_look_and_say (str): The last sequence in the look-and-say
+        series.
+        next_look_and_say (str): The next sequence in the look-and-say
+        series that needs to be guessed.
     """
 
     def __init__(self):
         """
-        Initializes the GameModel with a set of password validation rules and messages
-        associated with each rule. Also initializes the state for tracking rule satisfaction
-        and the look-and-say sequence for the current game session.
+        Initializes the GameModel with a set of password validation rules
+        and messages associated with each rule. Also initializes the state
+        for tracking rule satisfaction and the look-and-say sequence for
+        the current game session.
 
         """
         self.password = ""
@@ -59,17 +87,20 @@ class GameModel:
 
     def update_rules(self):
         """
-        Re-evaluates all rules based on the current password. Updates the list of satisfied rules
-        and determines the current rule index. Also sets the flag for all rules being satisfied.
+        Re-evaluates all rules based on the current password. Updates the
+        list of satisfied rules and determines the current rule index. Also
+        sets the flag for all rules being satisfied.
         """
-        # Check all rules based on the current password and update their satisfaction status
+        # Check all rules based on the current password
+        # Updates their satisfaction status
         self.satisfied_rules = []
         self.current_rule_index = 0
         for index, rule in enumerate(self.rules):
             if rule(self.password):
                 self.satisfied_rules.append(index)
             else:
-                # If any rule is not satisfied, we set it as the current rule to be displayed and break the loop
+                # If any rule is not satisfied, we set it as the current rule
+                # to be displayed and break the loop
                 self.current_rule_index = index
                 break
 
@@ -94,7 +125,8 @@ class GameModel:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the password meets the minimum length, False otherwise.
+            bool: True if the password meets the minimum length, False
+            otherwise.
         """
         return len(password) >= 5
 
@@ -112,37 +144,43 @@ class GameModel:
 
     def rule_include_uppercase(self, password):
         """
-        Validates that the password contains at least one uppercase letter.
+        Validates that the password contains at least one uppercase
+        letter.
 
         Args:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the password contains an uppercase letter, False otherwise.
+            bool: True if the password contains an uppercase letter, False
+            otherwise.
         """
         return any(c.isupper() for c in password)
 
     def rule_include_special_character(self, password):
         """
-        Validates that the password contains at least one special character.
+        Validates that the password contains at least one special
+        character.
 
         Args:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the password contains a special character, False otherwise.
+            bool: True if the password contains a special character, False
+            otherwise.
         """
         return any(not c.isalnum() for c in password)
 
     def rule_include_fibonacci(self, password):
         """
-        Validates that the password contains a number from the Fibonacci sequence.
+        Validates that the password contains a number from the Fibonacci
+        sequence.
 
         Args:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the password contains a Fibonacci number, False otherwise.
+            bool: True if the password contains a Fibonacci number, False
+            otherwise.
         """
         fib_nums = {
             0,
@@ -167,13 +205,15 @@ class GameModel:
 
     def rule_include_morse(self, password):
         """
-        Validates that the password contains at least one Morse code character ('.' or '-').
+        Validates that the password contains at least one Morse code
+        character ('.' or '-').
 
         Args:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the password contains a Morse code character, False otherwise.
+            bool: True if the password contains a Morse code character,
+            False otherwise.
         """
         return "." in password or "-" in password
 
@@ -211,44 +251,51 @@ class GameModel:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the password contains a Roman numeral, False otherwise.
+            bool: True if the password contains a Roman numeral, False
+            otherwise.
         """
         roman_numerals = {"I", "V", "X", "L", "C", "D", "M"}
         return any(numeral in password for numeral in roman_numerals)
 
     def rule_sum_prime(self, password):
         """
-        Validates that the sum of all digits in the password is a prime number.
+        Validates that the sum of all digits in the password is a prime
+        number.
 
         Args:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the sum of digits is a prime number, False otherwise.
+            bool: True if the sum of digits is a prime number, False
+            otherwise.
         """
         total = sum(int(c) for c in password if c.isdigit())
         return isprime(total)
 
     def rule_chess_sicilian_defense(self, password):
         """
-        Validates that the password contains the move 'c5', a response to the chess opening move 'e4'.
+        Validates that the password contains the move 'c5', a response
+        to the chess opening move 'e4'.
 
         Args:
             password (str): The password to validate.
 
         Returns:
-            bool: True if the password contains the move 'c5', False otherwise.
+            bool: True if the password contains the move 'c5', False
+            otherwise.
         """
         # Check if the password includes the move "c5"
         return "c5" in password
 
     def init_look_and_say(self):
         """
-        Initializes the look-and-say sequence by determining a random sequence length
-        and generating the required sequence as per the game rules.
+        Initializes the look-and-say sequence by determining a random
+        sequence length and generating the required sequence as per the
+        game rules.
 
         Raises:
-            ValueError: If the generated sequence does not meet expected criteria.
+            ValueError: If the generated sequence does not meet expected
+            criteria.
         """
         # Randomly determine the number of steps (e.g., between 3 and 6)
         num_steps = random.randint(3, 6)
@@ -264,10 +311,12 @@ class GameModel:
     @staticmethod
     def next_look_and_say_sequence(s):
         """
-        Calculates the next sequence in the look-and-say series based on the given input sequence.
+        Calculates the next sequence in the look-and-say series based on
+        the given input sequence.
 
         Args:
-            s (str): The current sequence from which the next one will be generated.
+            s (str): The current sequence from which the next one will be
+            generated.
 
         Returns:
             str: The next sequence in the look-and-say series.
