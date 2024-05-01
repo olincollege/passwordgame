@@ -3,6 +3,8 @@
 ## Summary
 "The Password Game" is a game that challenges players to create a password that abides by an increasingly difficult and ridiculous set of rules. We built the game using a model-view-controller architecture, with the Python coding language, and using a variety of libraries, notably including "pygame." Through a graphical user interface (GUI), players are met with immediate feedback and engaging visualizations as they progress through all of the crazy password rules. The rules range from basic requirements such as length or capitalization requirements to increasing difficult ones such as including roman numerals or the fibonacci sequence. Once all of the rules are satisfied, the player has won!
 
+See our project website [here](https://olincollege.github.io/passwordgame/ "Website Link")!
+
 ## Installation Instructions
 To install and play "The Password Game," you will need Python and a few libraries. Ensure you have the latest version on Python installed on your system, and then install the following three libraries in within the terminal using pip:
 
