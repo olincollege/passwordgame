@@ -4,6 +4,9 @@ By Arman Ozsu, Kristin Xu, and Luke Zahner at Olin College
 ## Video Presentation
 [Watch the video on Loom](https://www.loom.com/share/50fc1265832d4f6b88b1305cfe57f85a)
 
+https://github.com/olincollege/passwordgame/assets/143341959/1c370792-7054-4982-89a7-a4514867d90b
+
+
 ## What's The Password Game?
 "The Password Game" is a fun and interactive game that challenges players to create a password that satisfies a complex and increasingly ridiculous set of rules. We built it using the model-view-controller architecture. The goal is to satisfy all the quirky requirements, including integration of elements like roman numerals, Fibonacci sequence, and even Morse code, which triggers a celebration sequence once all criteria are met! Notable aspects about the game include that it provides real-time feedback and animations, has a unique set or rules/requirements, and prohibits inappropriate word entry.
 
