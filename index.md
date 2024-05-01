@@ -2,6 +2,7 @@
 By Arman Ozsu, Kristin Xu, and Luke Zahner at Olin College
 
 ## Video Presentation
+[Watch the video on Loom](https://www.loom.com/share/50fc1265832d4f6b88b1305cfe57f85a)
 https://github.com/olincollege/passwordgame/assets/143341959/1c370792-7054-4982-89a7-a4514867d90b
 
 
