@@ -81,7 +81,7 @@ class GameModel:
             "Password must include a number from the Fibonacci sequence.",
             "Include a Morse code character.",
             "Your password must include a month of the year.",
-            "Enter the next sequence in Look-and-Say after {self.last_look_and_say}",
+            f"Enter the next sequence in Look-and-Say after {self.last_look_and_say}",
             "Your password must include a Roman numeral.",
             "The sum of all numbers in the password must be a prime number.",
             "Respond to e4 with the Sicilian Defense.",
